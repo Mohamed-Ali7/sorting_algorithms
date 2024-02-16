@@ -14,7 +14,7 @@ void insertion_sort_list(listint_t **list)
 	listint_t *key = *list;
 	listint_t *cur = NULL;
 
-	if (!list || !*list)
+	if (!list || !(*list)->next)
 		return;
 
 	while (key->next != NULL)
@@ -38,9 +38,8 @@ void insertion_sort_list(listint_t **list)
 			else
 			{
 				key->next = *list;
-				(*list)->prev = key;
+				cur->prev = key;
 				*list = key;
-				key->prev = NULL;
 			}
 
 			cur = key->prev;
