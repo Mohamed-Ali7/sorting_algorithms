@@ -8,25 +8,22 @@
 */
 void swap_nodes(listint_t **list, listint_t *cur, listint_t *next)
 {
-	listint_t *temp_cur = cur;
-	listint_t *temp_next = next;
+	cur->next = next->next;
+	next->prev = cur->prev;
 
-	temp_cur->next = temp_next->next;
-	temp_next->prev = temp_cur->prev;
+	if (next->next)
+		next->next->prev = cur;
+	next->next = cur;
 
-	if (temp_next->next)
-		temp_next->next->prev = temp_cur;
-	temp_next->next = temp_cur;
-
-	if (temp_cur->prev)
+	if (cur->prev)
 	{
-		temp_cur->prev->next = temp_next;
-		temp_cur->prev = temp_next;
+		cur->prev->next = next;
+		cur->prev = next;
 	}
 	else
 	{
-		temp_cur->prev = temp_next;
-		*list = temp_next;
+		cur->prev = next;
+		*list = next;
 	}
 }
 
