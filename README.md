@@ -3,20 +3,6 @@
 
 C, Algorithm, Data structure.
 
--   By:  Alexandre Gautier
--   Weight:  2
--   Project to be done in teams of  2  people  (your team:  Olusegun Tayo, Mohamed Ali)
--   Project will start  Feb 14, 2024 6:00 AM, must end by  Feb 21, 2024 6:00 AM
--   Checker  was  released at  Feb 16, 2024 12:00 AM
--   An auto review will be launched at the deadline
-
-![](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-low_level_programming/248/willy-wonka.png)  
-  
-
-## Background Context
-
-This project is meant to be done by groups of two students. Each group of two should  [pair program](https://intranet.alxswe.com/rltoken/gIcHRL9I7i1lw2CTAll37A "pair program")  for at least the mandatory part.
-
 ## Resources
 
 **Read or watch**:
