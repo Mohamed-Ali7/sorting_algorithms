@@ -1,3 +1,176 @@
+
+# 0x1B. C - Sorting algorithms & Big O
+
+C, Algorithm, Data structure.
+
+-   By:  Alexandre Gautier
+-   Weight:  2
+-   Project to be done in teams of  2  people  (your team:  Olusegun Tayo, Mohamed Ali)
+-   Project will start  Feb 14, 2024 6:00 AM, must end by  Feb 21, 2024 6:00 AM
+-   Checker  was  released at  Feb 16, 2024 12:00 AM
+-   An auto review will be launched at the deadline
+
+![](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-low_level_programming/248/willy-wonka.png)  
+  
+
+## Background Context
+
+This project is meant to be done by groups of two students. Each group of two should  [pair program](https://intranet.alxswe.com/rltoken/gIcHRL9I7i1lw2CTAll37A "pair program")  for at least the mandatory part.
+
+## Resources
+
+**Read or watch**:
+
+-   [Sorting algorithm](https://intranet.alxswe.com/rltoken/-j5MKLBlzZAC2RfJ5DTBIg "Sorting algorithm")
+-   [Big O notation](https://intranet.alxswe.com/rltoken/WRvrE2BaNVQFssHiUATTrw "Big O notation")
+-   [Sorting algorithms animations](https://intranet.alxswe.com/rltoken/ol0P7NbYVb5R31iOv4Q40A "Sorting algorithms animations")
+-   [15 sorting algorithms in 6 minutes](https://intranet.alxswe.com/rltoken/_I0aEvhfJ66Xyob6dd9Utw "15 sorting algorithms in 6 minutes")  (_**WARNING**: The following video can trigger seizure/epilepsy. It is not required for the project, as it is only a funny visualization of different sorting algorithms_)
+-   [CS50 Algorithms explanation in detail by David Malan](https://intranet.alxswe.com/rltoken/Ea93HeEYuNkOL7sGb6zzGg "CS50 Algorithms explanation in detail by David Malan")
+-   [All about sorting algorithms](https://intranet.alxswe.com/rltoken/21X_eaj5RGcLIL9mZv2sqw "All about sorting algorithms")
+
+## Learning Objectives
+
+At the end of this project, you are expected to be able to  [explain to anyone](https://intranet.alxswe.com/rltoken/b-QhraVUoSGmQ1C4QfNoFw "explain to anyone"),  **without the help of Google**:
+
+### General
+
+-   At least four different sorting algorithms
+-   What is the Big O notation, and how to evaluate the time complexity of an algorithm
+-   How to select the best sorting algorithm for a given input
+-   What is a stable sorting algorithm
+
+### Copyright - Plagiarism
+
+-   You are tasked to come up with solutions for the tasks below yourself to meet with the above learning objectives.
+-   You will not be able to meet the objectives of this or any following project by copying and pasting someone else’s work.
+-   You are not allowed to publish any content of this project.
+-   Any form of plagiarism is strictly forbidden and will result in removal from the program.
+
+## Requirements
+
+### General
+
+-   Allowed editors:  `vi`,  `vim`,  `emacs`
+-   All your files will be compiled on Ubuntu 20.04 LTS using gcc, using the options -Wall -Werror -Wextra -pedantic -std=gnu89
+-   All your files should end with a new line
+-   A  `README.md`  file, at the root of the folder of the project, is mandatory
+-   Your code should use the  `Betty`  style. It will be checked using  [betty-style.pl](https://github.com/alx-tools/Betty/blob/master/betty-style.pl "betty-style.pl")  and  [betty-doc.pl](https://github.com/alx-tools/Betty/blob/master/betty-doc.pl "betty-doc.pl")
+-   You are not allowed to use global variables
+-   No more than 5 functions per file
+-   Unless specified otherwise, you are not allowed to use the standard library. Any use of functions like  _printf, puts, …_  is totally forbidden.
+-   In the following examples, the  `main.c`  files are shown as examples. You can use them to test your functions, but you don’t have to push them to your repo (if you do we won’t take them into account). We will use our own  `main.c`  files at compilation. Our  `main.c`  files might be different from the one shown in the examples
+-   The prototypes of all your functions should be included in your header file called  `sort.h`
+-   Don’t forget to push your header file
+-   All your header files should be include guarded
+-   A list/array does not need to be sorted if its size is less than 2.
+
+### GitHub
+
+**There should be one project repository per group. If you clone/fork/whatever a project repository with the same name before the second deadline, you risk a 0% score.**
+
+## More Info
+
+### Data Structure and Functions
+
+-   For this project you are given the following  `print_array`, and  `print_list`  functions:
+
+```
+#include <stdlib.h>
+#include <stdio.h>
+
+/**
+ * print_array - Prints an array of integers
+ *
+ * @array: The array to be printed
+ * @size: Number of elements in @array
+ */
+void print_array(const int *array, size_t size)
+{
+    size_t i;
+
+    i = 0;
+    while (array && i < size)
+    {
+        if (i > 0)
+            printf(", ");
+        printf("%d", array[i]);
+        ++i;
+    }
+    printf("\n");
+}
+
+```
+
+```
+#include <stdio.h>
+#include "sort.h"
+
+/**
+ * print_list - Prints a list of integers
+ *
+ * @list: The list to be printed
+ */
+void print_list(const listint_t *list)
+{
+    int i;
+
+    i = 0;
+    while (list)
+    {
+        if (i > 0)
+            printf(", ");
+        printf("%d", list->n);
+        ++i;
+        list = list->next;
+    }
+    printf("\n");
+}
+
+```
+
+-   Our files  `print_array.c`  and  `print_list.c`  (containing the  `print_array`  and  `print_list`  functions) will be compiled with your functions during the correction.
+-   Please declare the prototype of the functions  `print_array`  and  `print_list`  in your  `sort.h`  header file
+-   Please use the following data structure for doubly linked list:
+
+```
+/**
+ * struct listint_s - Doubly linked list node
+ *
+ * @n: Integer stored in the node
+ * @prev: Pointer to the previous element of the list
+ * @next: Pointer to the next element of the list
+ */
+typedef struct listint_s
+{
+    const int n;
+    struct listint_s *prev;
+    struct listint_s *next;
+} listint_t;
+
+```
+
+Please, note this format is used for Quiz and Task questions.
+
+-   `O(1)`
+-   `O(n)`
+-   `O(n!)`
+-   n square ->  `O(n^2)`
+-   log(n) ->  `O(log(n))`
+-   n * log(n) ->  `O(nlog(n))`
+-   n + k ->  `O(n+k)`
+-   …
+
+Please use the “short” notation (don’t use constants). Example:  `O(nk)`  or  `O(wn)`  should be written  `O(n)`. If an answer is required within a file, all your answers files must have a newline at the end.
+
+### Tests
+
+Here is a quick tip to help you test your sorting algorithms with big sets of random integers:  [Random.org](https://intranet.alxswe.com/rltoken/YR-VWQbICB59wZs1eAaI3w "Random.org")
+
+
+## Tasks
+
+### 0. Bubble sort
+https://youtu.be/lyZQPjUT5B4
 **Files - `0-bubble_sort.c`, and `0-O`:** Write a function that sorts an array of integers in ascending order using the  [Bubble sort](https://intranet.alxswe.com/rltoken/awhP8BhtkGi-lwmMc2-KAw "Bubble sort")  algorithm
 
 -   Prototype:  `void bubble_sort(int *array, size_t size);`
@@ -62,6 +235,8 @@ alex@/tmp/sort$ ./bubble
 alex@/tmp/sort$ 
 ```
 
+### 1. Insertion sort
+https://youtu.be/ROalU379l3U
 **Files - `1-insertion_sort_list.c`, and `1-O`:** Write a function that sorts a doubly linked list of integers in ascending order using the  [Insertion sort](https://intranet.alxswe.com/rltoken/GocxRKbPdsmERXeOHMCO2w "Insertion sort")  algorithm
 
 -   Prototype:  `void insertion_sort_list(listint_t **list);`
@@ -162,6 +337,8 @@ alex@/tmp/sort$ ./insertion
 alex@/tmp/sort$
 ```
 
+### 2. Selection sort
+https://youtu.be/Ns4TPTC8whw
 **Files - `2-selection_sort.c`,  and `2-O`:** Write a function that sorts an array of integers in ascending order using the  [Selection sort](https://intranet.alxswe.com/rltoken/SEbg0fBEraioQcl-igvUSw "Selection sort")  algorithm
 
 -   Prototype:  `void selection_sort(int *array, size_t size);`
@@ -213,6 +390,8 @@ alex@/tmp/sort$ ./select
 alex@/tmp/sort$
 ```
 
+### 3. Quick sort
+https://youtu.be/ywWBy6J5gz8
 **File - `3-quick_sort.c`, and `3-O`:** Write a function that sorts an array of integers in ascending order using the  [Quick sort](https://intranet.alxswe.com/rltoken/_pBTrH0Xyo4BRmQn4CtnMg "Quick sort")  algorithm
 
 -   Prototype:  `void quick_sort(int *array, size_t size);`
@@ -265,7 +444,7 @@ alex@/tmp/sort$ ./quick
 alex@/tmp/sort$
 ```
 
-
+### 4. Shell sort - Knuth Sequence
 **File - `100-shell_sort.c`:** Write a function that sorts an array of integers in ascending order using the  [Shell sort](https://intranet.alxswe.com/rltoken/FdpP4Qin3iDAaz1kuPD2Kg "Shell sort")  algorithm, using the  `Knuth sequence`
 
 -   Prototype:  `void shell_sort(int *array, size_t size);`
@@ -310,6 +489,7 @@ alex@/tmp/sort$ ./shell
 alex@/tmp/sort$
 ```
 
+### 5. Cocktail shaker sort
 **Files - `101-cocktail_sort_list.c`, and `101-O`:** Write a function that sorts a doubly linked list of integers in ascending order using the  [Cocktail shaker sort](https://intranet.alxswe.com/rltoken/bwa4mHfUbbWTB8J2OIHvpA "Cocktail shaker sort")  algorithm
 
 -   Prototype:  `void cocktail_sort_list(listint_t **list);`
@@ -410,6 +590,7 @@ alex@/tmp/sort$ ./cocktail
 alex@/tmp/sort$
 ```
 
+### 6. Counting sort
 **Files - `102-counting_sort.c`, and `102-O`:** Write a function that sorts an array of integers in ascending order using the  [Counting sort](https://intranet.alxswe.com/rltoken/ChcoDSCqnJHGC-qrSPEGHQ "Counting sort")  algorithm
 
 -   Prototype:  `void counting_sort(int *array, size_t size);`
@@ -457,6 +638,7 @@ alex@/tmp/sort$ ./counting
 alex@/tmp/sort$
 ```
 
+### 7. Merge sort
 **Files - `103-merge_sort.c`, and `103-O`:** Write a function that sorts an array of integers in ascending order using the  [Merge sort](https://intranet.alxswe.com/rltoken/8sZ3nAhd_YLNzHCgNbbf8A "Merge sort")  algorithm
 
 -   Prototype:  `void merge_sort(int *array, size_t size);`
@@ -541,6 +723,7 @@ Merging...
 alex@/tmp/sort$
 ```
 
+### 8. Heap sort
 **Files - `104-heap_sort.c`, and `104-O`:** Write a function that sorts an array of integers in ascending order using the  [Heap sort](https://intranet.alxswe.com/rltoken/YKYRdSdomaVkNrtNv1KS6Q "Heap sort")  algorithm
 
 -   Prototype:  `void heap_sort(int *array, size_t size);`
@@ -612,6 +795,7 @@ alex@/tmp/sort$ ./heap
 alex@/tmp/sort$
 ```
 
+### 9. Radix sort
 **File - `105-radix_sort.c`:** Write a function that sorts an array of integers in ascending order using the  [Radix sort](https://intranet.alxswe.com/rltoken/pBsj4j_AF_mJAgNZWmX3VQ "Radix sort")  algorithm
 
 -   Prototype:  `void radix_sort(int *array, size_t size);`
@@ -654,6 +838,7 @@ alex@/tmp/sort$ ./radix
 alex@/tmp/sort$
 ```
 
+### 10. Bitonic sort
 **Files - `106-bitonic_sort.c`, and `106-O`:** Write a function that sorts an array of integers in ascending order using the  [Bitonic sort](https://intranet.alxswe.com/rltoken/N-bjAbxm5yr4DoeIDz5lLw "Bitonic sort")  algorithm
 
 -   Prototype:  `void bitonic_sort(int *array, size_t size);`
@@ -760,6 +945,7 @@ Result [16/16] (UP):
 alex@/tmp/sort$
 ```
 
+### 11. Quick Sort - Hoare Partition scheme
 **Files - `107-quick_sort_hoare.c`, and `107-O`:** Write a function that sorts an array of integers in ascending order using the  [Quick sort](https://intranet.alxswe.com/rltoken/_pBTrH0Xyo4BRmQn4CtnMg "Quick sort")  algorithm
 
 -   Prototype:  `void quick_sort_hoare(int *array, size_t size);`
@@ -861,6 +1047,8 @@ alex@/tmp/sort$ ./quick_2
 alex@/tmp/sort$ 
 ```
 
+### 12. Dealer
+https://youtu.be/_
 **Files - `1000-sort_deck.c`, and `deck.h`:** Write a function that sorts a deck of cards.
 
 -   Prototype:  `void sort_deck(deck_node_t **deck);`
