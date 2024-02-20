@@ -28,6 +28,8 @@ void swap(int *x, int *y)
 */
 void quick_sort_hoare(int *array, size_t size)
 {
+	if (!array || size < 2)
+		return;
 	my_quick_sort(array, 0, size - 1, size);
 }
 
