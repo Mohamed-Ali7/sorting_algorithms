@@ -51,8 +51,8 @@ void my_quick_sort(int *arr, int start, int end, int arr_size)
 	if (start < end)
 	{
 		piv = partition(arr, start, end, arr_size);
-		my_quick_sort(arr, start, piv - 1, arr_size);
-		my_quick_sort(arr, piv, end, arr_size);
+		my_quick_sort(arr, start, piv, arr_size);
+		my_quick_sort(arr, piv + 1, end, arr_size);
 	}
 }
 
@@ -74,18 +74,22 @@ int partition(int *arr, int start, int end, int arr_size)
 	int i = start - 1;
 	int j = end + 1;
 
-	while (i < j)
+	while (i <= j)
 	{
+
 		i++;
 		while (arr[i] < pivot)
 			i++;
 		j--;
 		while (arr[j] > pivot)
 			j--;
-		if (i >= j)
-			return (i);
-		swap(&arr[j], &arr[i]);
-		print_array(arr, arr_size);
+		if (i > j)
+			return (j);
+		if (i != j)
+		{
+			swap(&arr[j], &arr[i]);
+			print_array(arr, arr_size);
+		}
 	}
-	return (i);
+	return (j);
 }
