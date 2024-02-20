@@ -87,5 +87,5 @@ int partition(int *arr, int start, int end, int arr_size)
 		swap(&arr[j], &arr[i]);
 		print_array(arr, arr_size);
 	}
-	return (j);
+	return (i);
 }
